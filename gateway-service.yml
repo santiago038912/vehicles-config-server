@@ -20,18 +20,18 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-        - id: user-service
-          uri: lb://user-service
-            predicates:
-              - Path=/user/**
-        - id: car-service
-          uri: lb://car-service
-            predicates:
-              - Path=/car/**
-        - id: bike-service
-          uri: lb://bike-service
-            predicates:
-              - Path=/bike/**
-            filters:
+        - id: user-service-route
+          uri: lb://user-service/
+          predicates:
+            - Path=/user/**
+        - id: car-service-route
+          uri: lb://car-service/
+          predicates:
+            - Path=/car/**
+        - id: bike-service-route
+          uri: lb://bike-service/
+          predicates:
+            - Path=/bike/**
+          filters:
             - AddRequestHeader=user-request-header, custom-user-request-header
             - AddResponseHeader=user-response-header, custom-user-response-header
